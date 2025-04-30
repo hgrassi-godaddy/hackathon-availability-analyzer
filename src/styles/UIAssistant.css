@@ -1,0 +1,172 @@
+.ui-assistant-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+.ui-assistant-header {
+  padding: 1.5rem;
+  padding-right: 4rem; /* Increase right padding to accommodate the toggle button */
+  text-align: center;
+  width: 100%;
+  position: relative;
+  transition: background-color 0.3s ease;
+  box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+/* Dark theme styles */
+.dark .ui-assistant-header {
+  background-color: #1f2937;
+}
+
+.dark .ui-assistant-title {
+  color: white;
+}
+
+.dark .ui-assistant-subtitle {
+  color: #d1d5db;
+}
+
+.dark .ui-assistant-input-area {
+  background-color: #374151;
+}
+
+.dark .ui-assistant-input {
+  background-color: #4b5563;
+  color: white;
+}
+
+.dark .ui-assistant-input::placeholder {
+  color: #9ca3af;
+}
+
+/* Light theme styles */
+.light .ui-assistant-header {
+  background-color: #e5e7eb;
+}
+
+.light .ui-assistant-title {
+  color: #1f2937;
+}
+
+.light .ui-assistant-subtitle {
+  color: #4b5563;
+}
+
+.light .ui-assistant-input-area {
+  background-color: #d1d5db;
+}
+
+.light .ui-assistant-input {
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
+.light .ui-assistant-input::placeholder {
+  color: #6b7280;
+}
+
+/* Theme toggle button styles */
+.theme-toggle-container {
+  position: absolute;
+  top: 50%;
+  right: 40px; /* Increased from 25px to 40px to bring it more inward */
+  transform: translateY(-50%); /* Center vertically */
+  z-index: 10; /* Ensure button appears above other elements */
+  box-sizing: border-box;
+}
+
+.theme-toggle-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.dark .theme-toggle-button {
+  background-color: #374151;
+}
+
+.light .theme-toggle-button {
+  background-color: #f3f4f6;
+}
+
+.theme-toggle-button:hover {
+  transform: scale(1.1);
+}
+
+.ui-assistant-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.ui-assistant-subtitle {
+  margin-top: 0.5rem;
+}
+
+.ui-assistant-input-area {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding-right: 1.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.ui-assistant-input {
+  flex-grow: 1;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  outline: none;
+  box-sizing: border-box;
+  margin-right: 10px;
+  max-width: calc(100% - 60px);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.ui-assistant-input:focus {
+  outline: 2px solid #3b82f6;
+}
+
+.ui-assistant-send-button {
+  margin-left: 0.5rem;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  flex-shrink: 0;
+}
+
+.ui-assistant-send-button:hover {
+  background-color: #2563eb;
+}
