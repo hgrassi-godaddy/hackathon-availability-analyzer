@@ -1,5 +1,6 @@
 import React, { useState, createContext } from 'react'
 import UIAssistant from './UIAssistant'
+import VisualDiagram from './VisualDiagram'
 import '../styles/ChatApp.css'
 
 // Create a theme context
@@ -23,6 +24,7 @@ const ChatApp: React.FC = () => {
         }`}
       >
         <UIAssistant />
+        <VisualDiagram />
       </div>
     </ThemeContext.Provider>
   )

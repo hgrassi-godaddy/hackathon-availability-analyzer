@@ -1,0 +1,266 @@
+.visual-diagram-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+  margin-top: 5px; /* Reduced for better spacing */
+  margin-bottom: 10px; /* Added to prevent cutting off at bottom */
+  transition: all 0.3s ease;
+  transform-origin: center top;
+  transform: scale(0.9); /* Increased from 0.85 to make diagram bigger */
+}
+
+.visual-diagram-container.dark {
+  color: #f0f0f0;
+}
+
+.visual-diagram-container.light {
+  color: #333333;
+}
+
+.diagram-title {
+  font-size: 1.3rem; /* Reduced from 1.5rem */
+  font-weight: 600;
+  margin-bottom: 10px; /* Reduced from 20px */
+  text-align: center;
+}
+
+.diagram-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* Horizontal layout */
+.diagram-content.horizontal {
+  flex-direction: row;
+  align-items: center; /* Changed from flex-start to center for better vertical alignment */
+  justify-content: center;
+  gap: 10px; /* Increased from 8px for better spacing */
+  flex-wrap: wrap;
+  padding: 5px;
+  overflow-x: auto;
+  width: 95%; /* Added to keep diagram centered and not extend too wide */
+  margin: 0 auto; /* Center the content */
+}
+
+.diagram-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px; /* Reduced from 15px */
+  border-radius: 6px;
+  width: 230px; /* Reduced from 250px */
+  min-height: 45px; /* Reduced from 50px */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+/* Adjust the box size for the horizontal layout */
+.diagram-content.horizontal .diagram-box {
+  width: 160px; /* Reduced from 180px */
+  min-height: 70px; /* Reduced from 80px */
+}
+
+/* Make the dependencies box more compact */
+.diagram-content.horizontal .dependencies-box {
+  width: 180px; /* Reduced from 200px */
+  height: auto;
+  min-height: 170px; /* Reduced from 180px */
+}
+
+.visual-diagram-container.dark .diagram-box {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+}
+
+.visual-diagram-container.light .diagram-box {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+}
+
+.box-title {
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Specific box styling */
+.assistant-box {
+  background-color: #7b68ee !important;
+  color: white !important;
+}
+
+.cluster-box {
+  background-color: #4a90e2 !important;
+  color: white !important;
+}
+
+.dependencies-box {
+  width: 280px; /* Reduced from 300px */
+  padding: 12px; /* Reduced from 15px */
+}
+
+.dependency-boxes {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 6px; /* Reduced from 8px */
+  margin-top: 8px; /* Reduced from 10px */
+}
+
+.dependency-box {
+  padding: 6px; /* Reduced from 8px */
+  border-radius: 4px;
+  text-align: center;
+  font-size: 0.85rem; /* Reduced from 0.9rem */
+  transition: all 0.3s ease;
+}
+
+.visual-diagram-container.dark .dependency-box {
+  background-color: #333;
+  border: 1px solid #555;
+}
+
+.visual-diagram-container.light .dependency-box {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+}
+
+.analyzer-box {
+  background-color: #4caf50 !important;
+  color: white !important;
+}
+
+.root-cause-box {
+  background-color: #ff9800 !important;
+  color: white !important;
+}
+
+/* Arrow styling */
+.diagram-arrow {
+  position: relative;
+  width: 40px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Horizontal arrow styling */
+.diagram-arrow.horizontal {
+  width: 20px;
+  height: 40px;
+  align-self: center;
+}
+
+.arrow-line {
+  width: 2px;
+  height: 20px;
+  background-color: #666;
+}
+
+/* Horizontal arrow line */
+.diagram-arrow.horizontal .arrow-line {
+  width: 20px;
+  height: 2px;
+}
+
+.visual-diagram-container.light .arrow-line {
+  background-color: #666;
+}
+
+.visual-diagram-container.dark .arrow-line {
+  background-color: #999;
+}
+
+.arrow-head {
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid #666;
+}
+
+/* Horizontal arrow head */
+.diagram-arrow.horizontal .arrow-head {
+  bottom: auto;
+  right: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 8px solid #666;
+  border-right: 0;
+}
+
+.visual-diagram-container.light .arrow-head {
+  border-top-color: #666;
+}
+
+.visual-diagram-container.dark .arrow-head {
+  border-top-color: #999;
+}
+
+/* Horizontal arrow head theme colors */
+.visual-diagram-container.light .diagram-arrow.horizontal .arrow-head {
+  border-top-color: transparent;
+  border-left-color: #666;
+}
+
+.visual-diagram-container.dark .diagram-arrow.horizontal .arrow-head {
+  border-top-color: transparent;
+  border-left-color: #999;
+}
+
+/* Responsive styling for smaller screens */
+@media (max-width: 500px) {
+  .diagram-box {
+    width: 100%;
+    max-width: 230px; /* Reduced from 250px */
+  }
+
+  .dependencies-box {
+    width: 100%;
+    max-width: 280px; /* Reduced from 300px */
+  }
+}
+
+@media (max-width: 1200px) {
+  .diagram-content.horizontal {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .diagram-arrow.horizontal {
+    width: 40px;
+    height: 20px;
+  }
+
+  .diagram-arrow.horizontal .arrow-line {
+    width: 2px;
+    height: 20px;
+  }
+
+  .diagram-arrow.horizontal .arrow-head {
+    bottom: 0;
+    right: auto;
+    border-top: 8px solid #666;
+    border-bottom: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+  }
+
+  .visual-diagram-container.light .diagram-arrow.horizontal .arrow-head {
+    border-top-color: #666;
+    border-left-color: transparent;
+  }
+
+  .visual-diagram-container.dark .diagram-arrow.horizontal .arrow-head {
+    border-top-color: #999;
+    border-left-color: transparent;
+  }
+}
