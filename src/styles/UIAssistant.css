@@ -1,8 +1,8 @@
 .ui-assistant-container {
   display: flex;
   flex-direction: column;
-  height: 70vh; /* Changed to 70% of viewport height */
-  width: 100vw; /* Changed to 100% of viewport width */
+  height: 70vh;
+  width: 100vw;
   margin: 0;
   border-radius: 0;
   overflow: hidden;
@@ -11,51 +11,136 @@
   box-sizing: border-box;
 }
 
+/* Dark mode styling */
 .ui-assistant-container.dark {
-  background-color: #1e1e1e;
+  background-color: #121212; /* Keep the dark theme base */
   color: #f0f0f0;
 }
 
+/* Light mode styling - updated with lighter colors */
 .ui-assistant-container.light {
   background-color: #ffffff;
   color: #333333;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
-.ui-assistant-header {
-  background-color: #7b68ee;
+/* Header styling for dark mode */
+.ui-assistant-container.dark .ui-assistant-header {
+  background-color: #121212; /* Keep dark header in dark mode */
   color: white;
-  padding: 20px;
+  border-bottom: 1px solid #333;
+}
+
+/* Header styling for light mode */
+.ui-assistant-container.light .ui-assistant-header {
+  background-color: #f9f9f9; /* Light neutral background for light mode */
+  color: #333;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.ui-assistant-header {
+  padding: 25px 20px 20px;
   text-align: center;
   position: relative;
   width: 100%;
   box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+/* GoDaddy Logo */
+.godaddy-logo-container {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.godaddy-logo {
+  height: 100%;
+  width: auto;
+  max-width: 100px;
+  display: block;
+}
+
+/* Title styling for dark mode */
+.ui-assistant-container.dark .ui-assistant-title {
+  color: white; /* Light title text for dark mode */
+}
+
+/* Title styling for light mode */
+.ui-assistant-container.light .ui-assistant-title {
+  color: #333; /* Dark title text for light mode */
 }
 
 .ui-assistant-title {
-  margin: 0 0 8px;
+  margin: 0 0 4px;
   font-size: 1.75rem;
   font-weight: 600;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+/* Teal underline below the title - keep it for both themes */
+.title-underline {
+  height: 3px;
+  background-color: #1bdbdb; /* GoDaddy teal accent */
+  width: 100px;
+  margin: 0 auto 12px;
+  border-radius: 2px;
+}
+
+/* Subtitle styling for dark mode */
+.ui-assistant-container.dark .ui-assistant-subtitle {
+  color: #cccccc; /* Light gray for dark mode */
+}
+
+/* Subtitle styling for light mode */
+.ui-assistant-container.light .ui-assistant-subtitle {
+  color: #777777; /* Darker gray for light mode */
 }
 
 .ui-assistant-subtitle {
   margin: 0;
   font-size: 1rem;
-  opacity: 0.9;
+  transition: color 0.3s ease;
 }
 
 .theme-toggle-container {
   position: absolute;
-  right: 15px;
+  right: 20px;
   top: 20px;
+  z-index: 10;
 }
 
+/* Theme toggle button styling with teal accents */
 .theme-toggle-button {
   background: none;
   border: none;
   cursor: pointer;
   font-size: 1.25rem;
   padding: 5px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+/* Add teal glow effect on hover for theme toggle */
+.theme-toggle-button:hover {
+  box-shadow: 0 0 8px rgba(27, 219, 219, 0.7); /* Teal glow effect */
+  transform: scale(1.1);
+}
+
+/* Dark mode - moon icon with subtle teal glow */
+.ui-assistant-container.dark .theme-toggle-button {
+  color: #1bdbdb; /* Teal moon icon in dark mode */
+  text-shadow: 0 0 5px rgba(27, 219, 219, 0.3);
+}
+
+/* Light mode - sun icon */
+.ui-assistant-container.light .theme-toggle-button {
+  color: #ff9900; /* Orange-yellow sun */
+  text-shadow: 0 0 5px rgba(255, 153, 0, 0.3);
 }
 
 /* Messages container */
@@ -71,7 +156,7 @@
 }
 
 .ui-assistant-container.dark .ui-assistant-messages-container {
-  background-color: #2a2a2a;
+  background-color: #1e1e1e; /* Slightly lighter than the base */
 }
 
 .ui-assistant-container.light .ui-assistant-messages-container {
@@ -84,8 +169,9 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  color: #888;
+  color: #1BDBDB; /* GoDaddy's teal color */
   font-style: italic;
+  font-weight: bold; /* Making the text bold */
 }
 
 /* Message styles */
@@ -98,16 +184,17 @@
   animation: fadeIn 0.3s ease-in-out;
 }
 
+/* Message styling updates */
 .user-message {
   align-self: flex-end;
-  background-color: #7b68ee;
-  color: white;
+  background-color: #1bdbdb; /* GoDaddy teal */
+  color: #121212;
   border-bottom-right-radius: 4px;
 }
 
 .assistant-message {
   align-self: flex-start;
-  background-color: #444;
+  background-color: #333333;
   color: white;
   border-bottom-left-radius: 4px;
 }
@@ -115,6 +202,11 @@
 .ui-assistant-container.light .assistant-message {
   background-color: #e0e0e0;
   color: #333;
+}
+
+/* Add subtle teal border on hover for messages */
+.ui-assistant-message:hover {
+  box-shadow: 0 0 0 1px rgba(27, 219, 219, 0.3);
 }
 
 .message-content {
@@ -162,55 +254,68 @@
   }
 }
 
-/* Input area */
-.ui-assistant-input-area {
-  display: flex;
-  padding: 14px;
-  background-color: #333;
-  border-top: 1px solid #444;
-  width: 100%;
-  box-sizing: border-box;
-  position: relative; /* Changed from fixed to relative */
-  bottom: auto; /* Remove fixed positioning at bottom */
-  left: auto;
+/* Input area styling */
+.ui-assistant-container.dark .ui-assistant-input-area {
+  background-color: #121212;
+  border-top: 1px solid #333;
 }
 
 .ui-assistant-container.light .ui-assistant-input-area {
-  background-color: #fff;
+  background-color: #f9f9f9;
   border-top: 1px solid #e0e0e0;
+}
+
+.ui-assistant-input-area {
+  display: flex;
+  padding: 14px 20px;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  bottom: auto;
+  left: auto;
+  transition: all 0.3s ease;
+}
+
+/* Input styling */
+.ui-assistant-container.dark .ui-assistant-input {
+  background-color: #333;
+  color: white;
+  border: 1px solid #444;
+}
+
+.ui-assistant-container.light .ui-assistant-input {
+  background-color: #ffffff;
+  color: #333;
+  border: 1px solid #e0e0e0;
 }
 
 .ui-assistant-input {
   flex: 1;
-  border: none;
-  background-color: #444;
-  color: white;
   padding: 12px 16px;
   border-radius: 24px;
   outline: none;
   font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
-.ui-assistant-container.light .ui-assistant-input {
-  background-color: #f0f0f0;
-  color: #333;
-}
-
+/* Teal focus state for input */
 .ui-assistant-input:focus {
-  box-shadow: 0 0 0 2px rgba(123, 104, 238, 0.4);
+  box-shadow: 0 0 0 2px rgba(27, 219, 219, 0.4); /* Teal glow */
+  border-color: #1bdbdb; /* Teal border on focus */
 }
 
-.ui-assistant-input::placeholder {
+.ui-assistant-container.dark .ui-assistant-input::placeholder {
   color: #999;
 }
 
 .ui-assistant-container.light .ui-assistant-input::placeholder {
-  color: #888;
+  color: #aaa;
 }
 
+/* Send button styling */
 .ui-assistant-send-button {
-  background-color: #7b68ee;
-  color: white;
+  background-color: #1bdbdb; /* GoDaddy teal */
+  color: #121212;
   border: none;
   width: 42px;
   height: 42px;
@@ -224,19 +329,27 @@
   transition: all 0.2s ease;
 }
 
+/* Enhanced hover effect with glow */
 .ui-assistant-send-button:hover {
-  background-color: #6a5acd;
+  background-color: #19c5c5;
   transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(27, 219, 219, 0.5); /* Teal glow on hover */
 }
 
-.ui-assistant-send-button:disabled {
-  background-color: #555;
+.ui-assistant-container.dark .ui-assistant-send-button:disabled {
+  background-color: #444;
+  color: #888;
   cursor: not-allowed;
   transform: none;
+  box-shadow: none;
 }
 
 .ui-assistant-container.light .ui-assistant-send-button:disabled {
   background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 @keyframes fadeIn {
@@ -247,5 +360,38 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .godaddy-logo-container {
+    top: 10px;
+    left: 10px;
+    height: 25px;
+  }
+
+  .theme-toggle-container {
+    top: 10px;
+    right: 10px;
+  }
+
+  .ui-assistant-header {
+    padding-top: 45px; /* More top padding on smaller screens to accommodate the logo */
+  }
+
+  .ui-assistant-title {
+    font-size: 1.5rem;
+  }
+
+  .title-underline {
+    width: 80px;
+  }
+}
+
+/* Ensure the logo doesn't overflow on very small screens */
+@media (max-width: 400px) {
+  .godaddy-logo-container {
+    height: 20px;
   }
 }

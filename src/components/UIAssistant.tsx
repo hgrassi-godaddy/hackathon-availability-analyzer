@@ -2,17 +2,18 @@ import React, { useState, useContext, useRef, useEffect } from 'react'
 import '../styles/UIAssistant.css'
 import { ThemeContext } from './ChatApp'
 import { useAIChat } from '../context/ChatContext'
+import gdLogo from '../styles/gdlogo.jpg' // Updated to use gdlogo.jpg
 
 const UIAssistant: React.FC = () => {
   const [message, setMessage] = useState('')
   const { darkMode, toggleTheme } = useContext(ThemeContext)
-  
+
   // Use our AI chat hook
   const { messages, sendMessage, isLoading } = useAIChat()
-  
+
   // Ref for auto-scrolling to bottom of messages
   const messagesEndRef = useRef<HTMLDivElement>(null)
-  
+
   // Auto-scroll to bottom when messages change
   useEffect(() => {
     console.log('Messages updated:', messages)
@@ -38,8 +39,11 @@ const UIAssistant: React.FC = () => {
 
   return (
     <div className={`ui-assistant-container ${darkMode ? 'dark' : 'light'}`}>
-      {/* Dark-themed header box */}
+      {/* Header with GoDaddy branding */}
       <div className="ui-assistant-header">
+        <div className="godaddy-logo-container">
+          <img src={gdLogo} alt="GoDaddy Logo" className="godaddy-logo" />
+        </div>
         <div className="theme-toggle-container">
           <button
             onClick={toggleTheme}
@@ -51,7 +55,8 @@ const UIAssistant: React.FC = () => {
             {darkMode ? '☀️' : '🌙'}
           </button>
         </div>
-        <h1 className="ui-assistant-title">AI Assistant</h1>
+        <h1 className="ui-assistant-title">Availability Analyzer</h1>
+        <div className="title-underline"></div>
         <p className="ui-assistant-subtitle">
           Ask me anything! I'm here to help.
         </p>
