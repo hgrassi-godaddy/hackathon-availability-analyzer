@@ -1,14 +1,14 @@
 .ui-assistant-container {
   display: flex;
   flex-direction: column;
-  height: 600px;
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  border-radius: 12px;
+  height: 70vh; /* Changed to 70% of viewport height */
+  width: 100vw; /* Changed to 100% of viewport width */
+  margin: 0;
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: none;
   transition: all 0.3s ease;
+  box-sizing: border-box;
 }
 
 .ui-assistant-container.dark {
@@ -28,6 +28,8 @@
   padding: 20px;
   text-align: center;
   position: relative;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .ui-assistant-title {
@@ -64,6 +66,8 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .ui-assistant-container.dark .ui-assistant-messages-container {
@@ -149,7 +153,8 @@
 }
 
 @keyframes typing {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -163,6 +168,11 @@
   padding: 14px;
   background-color: #333;
   border-top: 1px solid #444;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative; /* Changed from fixed to relative */
+  bottom: auto; /* Remove fixed positioning at bottom */
+  left: auto;
 }
 
 .ui-assistant-container.light .ui-assistant-input-area {
