@@ -52,7 +52,7 @@
   position: absolute;
   top: 15px;
   left: 15px;
-  height: 30px;
+  height: 50px; /* Increased from 40px */
   display: flex;
   align-items: center;
 }
@@ -60,7 +60,7 @@
 .godaddy-logo {
   height: 100%;
   width: auto;
-  max-width: 100px;
+  max-width: 160px; /* Increased from 130px */
   display: block;
 }
 
@@ -169,7 +169,7 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  color: #1BDBDB; /* GoDaddy's teal color */
+  color: #1bdbdb; /* GoDaddy's teal color */
   font-style: italic;
   font-weight: bold; /* Making the text bold */
 }
@@ -368,7 +368,7 @@
   .godaddy-logo-container {
     top: 10px;
     left: 10px;
-    height: 25px;
+    height: 45px; /* Increased from 35px */
   }
 
   .theme-toggle-container {
@@ -392,6 +392,6 @@
 /* Ensure the logo doesn't overflow on very small screens */
 @media (max-width: 400px) {
   .godaddy-logo-container {
-    height: 20px;
+    height: 40px; /* Increased from 30px */
   }
 }
