@@ -1,10 +1,23 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useRef, useEffect } from 'react'
 import '../styles/UIAssistant.css'
 import { ThemeContext } from './ChatApp'
+import { useAIChat } from '../context/ChatContext'
 
 const UIAssistant: React.FC = () => {
   const [message, setMessage] = useState('')
   const { darkMode, toggleTheme } = useContext(ThemeContext)
+  
+  // Use our AI chat hook
+  const { messages, sendMessage, isLoading } = useAIChat()
+  
+  // Ref for auto-scrolling to bottom of messages
+  const messagesEndRef = useRef<HTMLDivElement>(null)
+  
+  // Auto-scroll to bottom when messages change
+  useEffect(() => {
+    console.log('Messages updated:', messages)
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [messages])
 
   const handleMessageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMessage(e.target.value)
@@ -12,7 +25,7 @@ const UIAssistant: React.FC = () => {
 
   const handleSendMessage = () => {
     if (message.trim() !== '') {
-      console.log('Message sent:', message)
+      sendMessage(message)
       setMessage('')
     }
   }
@@ -44,6 +57,36 @@ const UIAssistant: React.FC = () => {
         </p>
       </div>
 
+      {/* Messages display area */}
+      <div className="ui-assistant-messages-container">
+        {messages.length === 0 ? (
+          <div className="ui-assistant-empty-state">
+            <p>No messages yet. Start a conversation!</p>
+          </div>
+        ) : (
+          messages.map((msg) => (
+            <div
+              key={msg.id}
+              className={`ui-assistant-message ${
+                msg.role === 'user' ? 'user-message' : 'assistant-message'
+              }`}
+            >
+              <div className="message-content">{msg.content}</div>
+            </div>
+          ))
+        )}
+        {isLoading && (
+          <div className="ui-assistant-message assistant-message">
+            <div className="message-content typing-indicator">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        )}
+        <div ref={messagesEndRef} />
+      </div>
+
       {/* Input area with send button */}
       <div className="ui-assistant-input-area">
         <input
@@ -53,10 +96,12 @@ const UIAssistant: React.FC = () => {
           onKeyDown={handleKeyDown}
           placeholder="Type your message..."
           className="ui-assistant-input"
+          disabled={isLoading}
         />
         <button
           onClick={handleSendMessage}
           className="ui-assistant-send-button"
+          disabled={isLoading || message.trim() === ''}
         >
           &#10148;
         </button>
