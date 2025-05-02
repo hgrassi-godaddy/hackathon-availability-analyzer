@@ -14,21 +14,45 @@ const transport = new Experimental_StdioMCPTransport({
 });
 
 // Create a client using the transport - wrapped in an async function
-let clientPromise = initializeClient();
-
-async function initializeClient() {
+let spaqClientPromise = initializeSPAQClient();
+async function initializeSPAQClient() {
   const client = await experimental_createMCPClient({
     transport,
   });
   return client;
 }
 
+let apmClientPromise = initializeAPMClient();
+async function initializeAPMClient() {
+  const client = await experimental_createMCPClient({
+    transport: {
+      type: "sse",
+      url: "http://localhost:8081/sse",
+    },
+    name: "APM Transactions Service",
+  });
+  return client;
+}
+
 export default async function getTools() {
-  // Use the client to get tools
-  const clientOne = await clientPromise;
-  const tools = await clientOne.tools();
-  console.log('***Tools:', tools);
-  return {
-    ...tools,
+  // Use Promise.all to get both clients concurrently
+  const [spaqClient, apmClient] = await Promise.all([
+    spaqClientPromise,
+    apmClientPromise
+  ]);
+  
+  // Get tools from both clients in parallel
+  const [spaqTools, apmTools] = await Promise.all([
+    spaqClient.tools(),
+    apmClient.tools()
+  ]);
+  
+  // Combine tools
+  const tools = {
+    ...spaqTools,
+    ...apmTools,
   };
+  
+  console.log('***Tools:', tools);
+  return tools;
 }
