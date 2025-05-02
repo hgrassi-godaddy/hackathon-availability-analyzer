@@ -3,6 +3,12 @@ import '../styles/UIAssistant.css'
 import { ThemeContext } from './ChatApp'
 import { useAIChat } from '../context/ChatContext'
 import gdLogo from '../styles/gdlogo.jpg' // Updated to use gdlogo.jpg
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
+import rehypeSanitize from 'rehype-sanitize'
+import rehypeHighlight from 'rehype-highlight'
+import remarkGfm from 'remark-gfm'
+import 'highlight.js/styles/github-dark.css' // Import a syntax highlighting theme
 
 const UIAssistant: React.FC = () => {
   const [message, setMessage] = useState('')
@@ -76,7 +82,21 @@ const UIAssistant: React.FC = () => {
                 msg.role === 'user' ? 'user-message' : 'assistant-message'
               }`}
             >
-              <div className="message-content">{msg.content}</div>
+              <div className={`message-content ${
+                msg.role !== 'user' ? 'markdown-content' : ''
+              }`}>
+                {msg.role === 'user' ? (
+                  msg.content
+                ) : (
+                  <ReactMarkdown
+                    //className="markdown-content"
+                    rehypePlugins={[rehypeRaw, rehypeSanitize, rehypeHighlight]}
+                    remarkPlugins={[remarkGfm]}
+                  >
+                    {msg.content}
+                  </ReactMarkdown>
+                )}
+              </div>
             </div>
           ))
         )}

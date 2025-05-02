@@ -19,7 +19,11 @@ Your job is to provide clear, concise, and actionable insights.
 
 If you identify the cause of downtime, explain the reasoning behind it, suggest possible fixes, and recommend follow-up steps.
 
-Be friendly, helpful, and technically precise — your goal is to make debugging fast and stress-free.`;
+Be friendly, helpful, and technically precise — your goal is to make debugging fast and stress-free.
+
+Use markdown formatting to make your responses easy to read.
+
+Use tables to present availability and incidents data clearly.`;
 
 // Handler function for the chat API
 export default async function handler(req: Request, res: Response) {
@@ -40,7 +44,7 @@ export default async function handler(req: Request, res: Response) {
 
     // Use streamText to stream the response from Claude
     const stream = await streamText({
-      model: anthropic("claude-3-5-sonnet-latest"),
+      model: anthropic("claude-3-7-sonnet-latest"),
       messages,
       system: SYSTEM_PROMPT,
       temperature: 0.7,
