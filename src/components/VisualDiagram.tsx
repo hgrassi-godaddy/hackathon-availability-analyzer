@@ -12,7 +12,7 @@ const VisualDiagram: React.FC = () => {
       <div className="diagram-content horizontal">
         {/* AI Assistant Box */}
         <div className="diagram-box assistant-box">
-          <div className="box-title">AI Assistant</div>
+          <div className="box-title">AI Assistant Agent + MCP Tools</div>
         </div>
 
         {/* Arrow */}
@@ -23,7 +23,7 @@ const VisualDiagram: React.FC = () => {
 
         {/* SPAQ Availability Cluster Box */}
         <div className="diagram-box cluster-box">
-          <div className="box-title">SPAQ Availability Cluster</div>
+          <div className="box-title">SPAQ Availability Cluster (Elastic Search MCP Server)</div>
         </div>
 
         {/* Arrow */}
@@ -34,13 +34,13 @@ const VisualDiagram: React.FC = () => {
 
         {/* Dependencies Log Systems Box */}
         <div className="diagram-box dependencies-box">
-          <div className="box-title">Dependencies Log Systems</div>
+          <div className="box-title">Dependencies Log Systems (Custom MCP Server)</div>
 
           {/* Nested boxes for dependencies */}
           <div className="dependency-boxes">
-            <div className="dependency-box">MWP Logs</div>
+            <div className="dependency-box">APM Logs</div>
             <div className="dependency-box">Product Graph Logs</div>
-            <div className="dependency-box">PWS API Logs</div>
+            <div className="dependency-box">MWP API Logs</div>
           </div>
         </div>
 
@@ -52,7 +52,7 @@ const VisualDiagram: React.FC = () => {
 
         {/* Log Analyzer Box */}
         <div className="diagram-box analyzer-box">
-          <div className="box-title">Log Analyzer</div>
+          <div className="box-title">AI Log Analyzer</div>
         </div>
 
         {/* Arrow */}

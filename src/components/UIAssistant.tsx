@@ -61,7 +61,7 @@ const UIAssistant: React.FC = () => {
             {darkMode ? '☀️' : '🌙'}
           </button>
         </div>
-        <h1 className="ui-assistant-title">Availability Analyzer</h1>
+        <h1 className="ui-assistant-title">Availability Analyzer Agent</h1>
         <div className="title-underline"></div>
         <p className="ui-assistant-subtitle">
           Ask me anything! I'm here to help.

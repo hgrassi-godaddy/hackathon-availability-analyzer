@@ -23,7 +23,11 @@ Be friendly, helpful, and technically precise — your goal is to make debugging
 
 Use markdown formatting to make your responses easy to read.
 
-Use tables to present availability and incidents data clearly.`;
+Use tables to present availability and incidents data clearly.
+
+Important notes:
+* When they mention the app or service name wdh it refers to wdh_venture_home_PROD which means Website Design Hub
+`;
 
 // Handler function for the chat API
 export default async function handler(req: Request, res: Response) {
@@ -32,6 +36,7 @@ export default async function handler(req: Request, res: Response) {
   }
 
   try {
+    console.error('Starting...');
     // Get messages from request body
     const { messages } = req.body;
 
@@ -44,7 +49,7 @@ export default async function handler(req: Request, res: Response) {
 
     // Use streamText to stream the response from Claude
     const stream = await streamText({
-      model: anthropic("claude-3-7-sonnet-latest"),
+      model: anthropic("claude-3-5-haiku-latest"),
       messages,
       system: SYSTEM_PROMPT,
       temperature: 0.7,
@@ -58,6 +63,7 @@ export default async function handler(req: Request, res: Response) {
       res.write(`0: ${JSON.stringify(textPart)}\n\n`);
     }
     // End the response when done
+    console.error('Ending...');
     res.end();
   } catch (error) {
     console.error('Error in chat API:', error);

@@ -53,6 +53,6 @@ export default async function getTools() {
     ...apmTools,
   };
   
-  console.log('***Tools:', tools);
+  //console.log('***Tools:', tools);
   return tools;
 }
