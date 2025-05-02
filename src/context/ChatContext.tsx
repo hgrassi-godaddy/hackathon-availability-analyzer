@@ -29,6 +29,7 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     onError: (err) => {
       console.error('Chat error:', err);
     },
+    maxSteps: 10
   });
 
   // Function to send a message

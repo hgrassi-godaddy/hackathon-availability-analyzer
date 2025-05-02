@@ -213,6 +213,130 @@
   word-break: break-word;
 }
 
+/* Markdown content styling */
+.markdown-content {
+  width: 100%;
+}
+
+/* Styling for code blocks in markdown */
+.markdown-content pre {
+  background-color: #1a1a1a;
+  border-radius: 6px;
+  padding: 12px;
+  overflow-x: auto;
+  margin: 12px 0;
+  border-left: 4px solid #1bdbdb;
+}
+
+.ui-assistant-container.light .markdown-content pre {
+  background-color: #f0f0f0;
+  border-left: 4px solid #1bdbdb;
+}
+
+/* Inline code styling */
+.markdown-content code {
+  background-color: rgba(27, 219, 219, 0.1);
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.9em;
+}
+
+.ui-assistant-container.dark .markdown-content code {
+  color: #1bdbdb;
+}
+
+.ui-assistant-container.light .markdown-content code {
+  color: #006666;
+}
+
+/* Table styling */
+.markdown-content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 12px 0;
+  overflow-x: auto;
+  display: block;
+}
+
+.markdown-content th,
+.markdown-content td {
+  padding: 8px 12px;
+  border: 1px solid #444;
+  text-align: left;
+}
+
+.ui-assistant-container.light .markdown-content th,
+.ui-assistant-container.light .markdown-content td {
+  border: 1px solid #ddd;
+}
+
+.markdown-content th {
+  background-color: #2a2a2a;
+}
+
+.ui-assistant-container.light .markdown-content th {
+  background-color: #f2f2f2;
+}
+
+/* List styling */
+.markdown-content ul,
+.markdown-content ol {
+  padding-left: 20px;
+  margin: 8px 0;
+}
+
+.markdown-content li {
+  margin-bottom: 4px;
+}
+
+/* Blockquote styling */
+.markdown-content blockquote {
+  margin: 12px 0;
+  padding-left: 16px;
+  border-left: 4px solid #1bdbdb;
+  color: #aaa;
+  font-style: italic;
+}
+
+.ui-assistant-container.light .markdown-content blockquote {
+  color: #666;
+}
+
+/* Links styling */
+.markdown-content a {
+  color: #1bdbdb;
+  text-decoration: none;
+  border-bottom: 1px dashed #1bdbdb;
+}
+
+.markdown-content a:hover {
+  text-decoration: none;
+  border-bottom: 1px solid #1bdbdb;
+}
+
+/* Heading styling */
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4,
+.markdown-content h5,
+.markdown-content h6 {
+  margin-top: 16px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #333;
+  padding-bottom: 4px;
+}
+
+.ui-assistant-container.light .markdown-content h1,
+.ui-assistant-container.light .markdown-content h2,
+.ui-assistant-container.light .markdown-content h3,
+.ui-assistant-container.light .markdown-content h4,
+.ui-assistant-container.light .markdown-content h5,
+.ui-assistant-container.light .markdown-content h6 {
+  border-bottom: 1px solid #ddd;
+}
+
 /* Typing indicator */
 .typing-indicator {
   display: flex;
@@ -386,6 +510,17 @@
 
   .title-underline {
     width: 80px;
+  }
+  
+  /* Make messages wider on mobile */
+  .ui-assistant-message {
+    max-width: 90%;
+  }
+  
+  /* Adjust code blocks for mobile */
+  .markdown-content pre {
+    padding: 8px;
+    font-size: 0.85em;
   }
 }
 
